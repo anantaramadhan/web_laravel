@@ -1,18 +1,6 @@
 <?php
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\PendidikanController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\MediaController;
-use App\Http\Controllers\Backend\PengalamanKerjaController;
-use App\Http\Controllers\CobaController;
-use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UploadFilesController;
-use App\Http\Middleware\CheckAge;
-use App\Http\Middleware\CheckEmailVerified;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\HomeController;
 
 
 
@@ -51,7 +39,12 @@ use App\Http\Controllers\Frontend\HomeController;
 
 //acara 7
 
-
 Route::group(['namespace' => 'App\Http\Controllers\Frontend'], function () {
     Route::resource('home', "HomeController");
 });
+
+//acara 8
+Route::resource('dashboard', DashboardController::class);
+
+
+

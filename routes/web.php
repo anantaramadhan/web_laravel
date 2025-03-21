@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ManagementUserController;
+use app\Http\Controllers\SessionController;
+use app\Http\Controllers\PegawaiController;
+
 
 // Route dasar
 Route::get('/', function () {
@@ -53,6 +56,13 @@ Route::group(['namespace' => ''], function () {
     Route::resource('pendidikan', PendidikanController::class);
 });
 
-use App\Http\Controllers\Auth\LoginController;
 
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+//session acara 17
+ Route::get('/session/create', [SessionController::class, 'create']);
+ Route::get('/session/show', [SessionController::class, 'show']);
+ Route::get('/session/delete', [SessionController::class, 'delete']); 
+ Route::get('/formulir', [PegawaiController::class, 'formulir']);
+ Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
+ Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);

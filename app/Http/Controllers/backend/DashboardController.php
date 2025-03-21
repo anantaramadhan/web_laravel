@@ -23,4 +23,5 @@ class DashboardController extends Controller
     {
         return view('backend.dashboard'); // Pastikan file ini ada
     }
+
 }

@@ -7,7 +7,8 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ManagementUserController;
 use app\Http\Controllers\SessionController;
 use app\Http\Controllers\PegawaiController;
-
+use app\Http\Controllers\CobaController;
+use App\Http\Controllers\UploadController;
 
 // Route dasar
 Route::get('/', function () {
@@ -63,6 +64,24 @@ Route::group(['namespace' => ''], function () {
  Route::get('/session/create', [SessionController::class, 'create']);
  Route::get('/session/show', [SessionController::class, 'show']);
  Route::get('/session/delete', [SessionController::class, 'delete']); 
+
  Route::get('/formulir', [PegawaiController::class, 'formulir']);
  Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
  Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
+
+ //acara 18
+ Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
+
+ // acara 19 
+ Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+ Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+ Route::post('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload.resize');
+
+
+
+ // acara 20 
+
+ Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone');
+ Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
+ Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
+ Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');

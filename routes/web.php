@@ -10,6 +10,9 @@ use app\Http\Controllers\PegawaiController;
 use app\Http\Controllers\CobaController;
 use App\Http\Controllers\UploadController;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\ApiPendidikanController;
+
 // Route dasar
 Route::get('/', function () {
     return view('welcome');
@@ -85,3 +88,19 @@ Route::group(['namespace' => ''], function () {
  Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
  Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
  Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
+
+ // acara 21
+ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('api_pendidikan', [ApiPendidikanController::class, 'getAll']);
+Route::get('api_pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
+Route::post('api_pendidikan', [ApiPendidikanController::class, 'createPen']);
+Route::put('api_pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
+Route::delete('api_pendidikan/{id}', [ApiPendidikanController::class, 'deletePen']);
+
+// acara 22
+Route::get('api_pendidikan/{id}', [ApiPendidikanController::class, 'getPen']);
+ Route::post('api_pendidikan', [ApiPendidikanController::class, 'createPen']);
+ Route::put('api_pendidikan/{id}', [ApiPendidikanController::class, 'updatePen']);
